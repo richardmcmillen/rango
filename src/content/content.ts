@@ -6,7 +6,11 @@ import { intersectors } from "./intersectors";
 
 browser.runtime.onMessage.addListener(async (request) => {
 	if (request.action.type === "clickElementByHint") {
-		clickElementByHint(request.action.target);
+		clickElementByHint(request.action.target, false);
+	}
+
+	if (request.action.type === "clickElementByHintNewTab") {
+		clickElementByHint(request.action.target, true);
 	}
 
 	if (request.action.type === "hoverElementByHint") {
